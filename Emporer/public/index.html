@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emperor · 在线卡牌对决</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Emperor 首页"><span class="brand-mark">♛</span><span>EMPEROR</span></a>
+    <div class="topbar-right"><span class="live-dot"></span><span>实时对局</span><span id="top-player" class="top-player"></span></div>
+  </header>
+
+  <main>
+    <section id="auth-view" class="auth-view">
+      <div class="hero-copy">
+        <p class="eyebrow">THE ROYAL DUEL</p>
+        <h1>一张牌，<em>改写王国。</em></h1>
+        <p class="hero-subtitle">两位玩家，一场心理博弈。皇帝、平民与奴隶之间，只有最勇敢的出牌者能走到最后。</p>
+        <div class="rule-strip"><span>♛ 皇帝</span><i>击败</i><span>● 平民</span><i>击败</i><span>⚒ 奴隶</span><i>击败</i><span>♛ 皇帝</span></div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-heading"><span class="section-kicker">WELCOME TO THE COURT</span><h2 id="auth-title">进入宫廷</h2><p id="auth-caption">登录后寻找一位对手，开始你的第一局。</p></div>
+        <div class="auth-tabs"><button class="tab active" data-mode="login">登录</button><button class="tab" data-mode="register">注册</button></div>
+        <form id="auth-form">
+          <label>玩家名<input id="username" name="username" autocomplete="username" required minlength="2" maxlength="20" placeholder="例如：夜行者"></label>
+          <label>密码<input id="password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="至少 6 位"></label>
+          <button class="primary-button" type="submit"><span id="auth-submit-label">进入游戏</span><span class="button-arrow">→</span></button>
+          <p id="auth-error" class="form-error"></p>
+        </form>
+        <p class="auth-note">密码仅以加密摘要形式保存，你的牌局记录属于你自己。</p>
+      </div>
+    </section>
+
+    <section id="app-view" class="app-view hidden">
+      <div class="app-header">
+        <div><p class="eyebrow">ROYAL LOBBY</p><h1>欢迎回来，<span id="welcome-name">玩家</span></h1></div>
+        <button id="logout-button" class="quiet-button">退出登录</button>
+      </div>
+      <div id="lobby-grid" class="lobby-grid">
+        <article class="profile-card panel"><div class="profile-avatar">♛</div><div><p class="muted-label">CURRENT PLAYER</p><h2 id="profile-name">玩家</h2><p class="profile-meta"><span id="wins">0</span> 胜 <span class="dot-separator">·</span> <span id="losses">0</span> 负</p></div></article>
+        <article class="match-card panel"><div class="match-copy"><p class="muted-label">QUICK MATCH</p><h2 id="match-title">寻找对手</h2><p id="match-caption">匹配一位在线玩家，立即开始一局。</p></div><div class="match-actions"><button id="match-button" class="primary-button compact">寻找对手 <span class="button-arrow">→</span></button><button id="create-room-button" class="quiet-button">创建房间</button><div id="queue-state" class="queue-state hidden"><span class="spinner"></span><span>正在等待另一位玩家…</span><button id="cancel-match" class="quiet-button">取消</button></div><div class="join-code"><input id="room-code-input" maxlength="6" placeholder="输入 6 位房间码"><button id="join-code-button" class="quiet-button">加入</button></div></div></article>
+      </div>
+      <div id="room-view" class="hidden"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

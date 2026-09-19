@@ -1,0 +1,10 @@
+{
+  "name": "emperor-online",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Emperor online card game with a lightweight Node server",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
